@@ -1,0 +1,48 @@
+from mentor import *
+import pickle
+
+
+def load_from_pickle(path):
+    try:
+        with open(path, 'rb') as outfile:
+            data = pickle.load(outfile)
+    except:
+        data = Mentor('admin', 'admin', '#123', ['Hello', 'Works as Mentor'])
+        write_to_pickle(path, data)
+    return data
+
+def write_to_pickle(data, path):
+    with open(path, 'rb') as infile:
+        lst_data = pickle.load(infile)
+    
+    lst_data.append(data)
+
+    with open(path, 'wb') as outfile:
+        pickle.dump(lst_data, outfile)
+
+
+def calculate_mentees():
+    mentor_data = load_from_pickle("mentor_data.pickle")
+    mentee_data = load_from_pickle('student_data.pickle')
+
+    #print("Mentors :", mentor_data)
+    #print("Menteee :", mentee_data)
+
+    pair_dict = {}
+    for mentor in mentor_data:
+        pair_dict[mentor] = []
+    
+    # Assign then mentor and students pair
+    i = 0
+    j = 0
+    while(j < len(mentee_data)):
+        pair_dict[mentor_data[i]].append(mentee_data[j])
+        mentee_data[j].mentor_assigned = mentor_data[i]
+        j += 1
+        i += 1
+        i = i % len(mentor_data)
+
+    final_data = pair_dict
+    #print("Final_Data :", final_data)
+    with open('mentor_mentee.pickle', 'wb') as outfile:
+        pickle.dump(final_data, outfile)

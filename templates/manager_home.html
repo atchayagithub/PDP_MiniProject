@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Welcome Manager</title>
+{% endblock %}
+
+{% block body %}
+    <form method="post" action="generate_data">
+        <label for="student_id">Enter Student ID Number :</label>
+        <input type="text" id="student_id" name="student_id" required>
+        <label for="report">Generate Report Based On :</label>
+        <select id="report" name="report" required>
+            <option value="" disabled selected>Select Options</option>
+            <option value="simple">Simplified Report</option>
+            <option value="detailed">Detailed Report</option>
+            <option value="every">Everyone Report</option>
+        </select>
+
+        <button type="submit">Generate</button>
+    </form>
+{% endblock %}

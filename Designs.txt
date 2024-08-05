@@ -1,0 +1,54 @@
+# Outline Completed!
+
+#An organization like SSN College of Engineering wants to develop a mentoring system. 
+#A mentor should be able to view all the mentees assigned to them. 
+#On selecting a mentee, the mentor should be able to add/delete/update the mentee details. 
+#The mentor may schedule a meeting with a mentee and should be able to capture the meeting details later. 
+#A mentee should be able to see only their details, except for the confidential information
+entered by the mentor. 
+#A mentee should be able to request for a meeting with the mentor through this
+system. 
+#The manager should be able to generate various reports from these mentee records.
+
+
+#Maybe an observer pattern for the notifications of scedule meetings??
+    # Yea It workS!
+    # Implemented ?? Yesh!
+    # Added observer for both mentor and student object !
+
+#Stratergy Pattern Implemented for manager!
+    # Implemeted Successfully!
+    # For each report Generation!
+
+#Facade Pattern
+    # Pattern for interface
+    # Added!
+
+#Chain of Responsibility Pattern
+    #use of middle ware then deciding the output!
+    #Added
+
+#Factory Pattern
+    #Added
+    #Used for creating mentor and student objects!
+
+#State Pattern!
+    #For messages!
+    #Use of a boolean value to change state for each notification.
+
+#Model-View-Control pattern(MVC)
+    #Added!
+    #Use of the buttons and other inputs to keep the display updated!
+    #(i.e) Use of a Model as view and a controller that controls the view.
+
+#Command Pattern 
+    #Used in buttons as they are the invoker.
+    #These will call the function for buttons function on JavaScript!
+    #The receiver is the student or mentor object they act upon!
+    #The command will be the function that works in backend connecting the object with the invoker.
+
+
+
+
+
+

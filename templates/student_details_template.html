@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Student Details</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+
+        form {
+            display: block; 
+            margin-top: 20px; 
+            align-items: center;
+            align-content: center;
+        }
+
+        label {
+            margin-bottom: 8px;
+        }
+
+        input,
+        textarea {
+            padding: 8px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="container" style="margin-bottom: 20px;">
+        <h2>Student Name :</h2> {{ name }}
+        <h2>Student Id :</h2> {{ id }}
+        <h2>Student Details :</h2>{{ details }}
+        <h2>Mentor Assigned Deatils :</h2> {{ mentor_assigned }}
+        <form method="post" action="assign_mentee_details">
+            <input type="text" id="id_no" name="id_no"  value="{{ id }}" style="display: none;">
+            <label for="mentor_assigned">Extra Details :</label>
+            <input type="textarea" id="mentor_assigned" name="mentor_assigned">
+    
+            <br>
+
+            <button type="submit">Add Extra Details</button> 
+        </form>
+    </div>
+{% endblock %}

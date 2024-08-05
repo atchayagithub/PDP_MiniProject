@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+    <title>Document</title>
+    <style>
+        body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      
+      .container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center; /* Center text */
+      }
+      
+      form {
+        display: inline-block; /* Center the form within the container */
+      }
+      
+      label {
+        margin-bottom: 8px;
+        display: block; /* Display labels as blocks */
+      }
+      
+      input,
+      textarea {
+        padding: 8px;
+        margin-bottom: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 100%; /* Make input fields and textareas 100% width */
+        box-sizing: border-box; /* Include padding and border in width calculation */
+      }
+      
+      button {
+        background-color: #4caf50;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      
+      button:hover {
+        background-color: #45a049;
+      }
+    </style> 
+      
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        {{ generated_txt|safe }}
+    </div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Student Mentor Sytem</title>
+{% endblock %}
+
+{% block body %}
+    <form method = "POST" action="{{ url_for('login')}}">
+        <p>
+            <h1>Welcome To Student Mentor System!</h1>
+            <br>
+        </p>
+        <label>Username :</label>
+        <input type="text" id="username" name="username" placeholder="Enter Username" required>
+        <br>
+        <br>
+        <label>Password :</label>
+        <input type="password" id="password" name="password" placeholder="Enter Password" required>
+        <br>
+        <br>
+        <label>Role :</label>
+            <select name="role">
+                <option value="mentor">Mentor</option>
+                <option value="student">Student</option>
+            </select>
+        <br>
+        <br>
+        <button type="submit">Login</button>
+        <br>
+        <br>
+        Click <a href="{{ url_for('signup_page') }}">here</a> If you Don't Have a Account
+    </form>
+    <br>
+    
+    
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Student Meeting Request</title>
+    <style>
+        
+    </style>
+{% endblock %}
+
+{% block body %}
+<form>
+    <div>
+        {% for key, value in data.items() %}
+            <label><b>{{ key|capitalize|replace("_", " ") }} : </b>{{ value }}</label>
+            <br>
+        {% endfor %}
+    </div>  
+
+    <br>
+
+    <center><a href="{{ url_for('go_to_meeting_forms', name=data['id_no']) }}">Request a Meeting</a></center>
+</form>
+{% endblock %}

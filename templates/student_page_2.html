@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meeting Request Form</title>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-bottom: 8px;
+    }
+
+    input,
+    textarea {
+      padding: 8px;
+      margin-bottom: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Meeting Request Form</h2>
+    <form id="meetingForm" action="home_after_mentee_schedule">
+      <label for="student_id">Student Id:</label>
+      <input type="text" id="student_id" value="{{ student_id }}" disabled>
+
+      <label for="mentorname">Mentor's Name:</label>
+      <input type="text" id="mentorname" value="{{ mentor_name }}" disabled>
+
+      <label for="meetingTopic">Meeting Topic:</label>
+      <input type="text" id="meetingTopic" name="meetingTopic" required>
+
+      <label for="message">Your Message:</label>
+      <textarea id="message" name="message" required></textarea>
+
+      <button type="submit" onclick="sendMeetingRequest()">Submit Request</button>
+    </form>
+  </div>
+
+  <script>
+    
+    function sendMeetingRequest() {
+      var stud_id = document.getElementById("student_id").value;
+      var mentor_name = document.getElementById("mentorname").value;
+      var meetingTopic = document.getElementById("meetingTopic").value;
+      var message = document.getElementById("message").value;
+
+      $.ajax({
+        type: "POST",
+        url: "/handle_mentor_meeting_request", 
+        data: {
+          name : mentor_name,
+          id_no : stud_id,
+          topic : meetingTopic,
+          msg : message
+        },
+        success: function (response) {
+          alert("Details submitted successfully");
+        },
+        error: function (error) {
+          alert("Error submitting form");
+        }
+      });
+    }
+    
+  </script>
+</body>
+</html>

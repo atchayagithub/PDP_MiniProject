@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Student Meeting Request</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+{% endblock %}
+
+{% block body %}
+    <form id="meetingRequestForm" method="post">
+        <label>Dummy Name </label>
+        <label>Dummy Name </label>
+        <label>Dummy Name </label>
+        <label>Dummy Name </label>
+        <br>
+        <br>
+
+        <label for="name">Name as in Aadhaar:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="registerNo">Register Number:</label>
+        <input type="text" id="registerNo" name="registerNo" required>
+        
+        <label for="dob">Date of Birth:</label>
+        <input type="text" id="dob" name="dob" required>
+        
+        <label for="emailid">Email id:</label>
+        <input type="text" id="emailid" name="emailid" required>
+        
+        <label class="required" for="department">Department:</label>
+        <select id="department" name="department" required>
+            <option value="" disabled selected>Select Department</option>
+            <option value="computer">Computer Science Engineering</option>
+            <option value="informationtech">Information Technology</option>
+            <option value="Biomedical">Biomedical Engineering</option>
+            <option value="civil">Civil Engineering</option>
+            <option value="electrical">Electrical and Electronics Engineering</option>
+            <option value="ece">Electronics and Communication Engineering</option>
+            <option value="mechanical">Mechanical Engineering</option>
+            <option value="chemical">Chemical Engineering</option>
+        </select>
+        <br>
+        
+        <label for="year_of_studying">Year of studying:</label>
+        <select id="year_of_studying" name="year_of_studying" required>
+          <option value="" disabled selected>Select Year</option>
+          <option value="first">First</option>
+          <option value="second">Second</option>
+          <option value="third">Third</option>
+          <option value="final">Final</option>
+        </select>
+        <br>
+        
+        <label for="admission_category">Admission Category:</label>
+        <select id="admission_category" name="admission_category" required>
+          <option value="" disabled selected>Select Admission Category</option>
+          <option value="tnea">TNEA</option>
+          <option value="Management">Management</option>
+        </select>
+        <br>
+        
+        <label for="mobile_no">Mobile Number:</label>
+        <input type="text" id="mobile_no" name="mobile_no" required>
+
+        <center>
+        <button type="submit" onclick="validateForm()">Submit Details</button></center>
+    </form>
+
+    <script>
+        function validateForm() {
+            var name = document.getElementById('name').value;
+            var registerNo = document.getElementById('registerNo').value;
+            var dob = document.getElementById('dob').value;
+            var emailid = document.getElementById('emailid').value;
+            var mobile_no = document.getElementById('mobile_no').value;
+            var department = document.getElementById('department').value;
+            var year_of_studying= document.getElementById('year_of_studying').value;
+            var admission_category = document.getElementById('admission_category').value;
+            
+            
+            if (name === "" || registerNo === "" || dob === "" || emailid === "" || mobile_no === "" || department === "" || year_of_studying === "" || admission_category === "") {
+                alert("Please fill out all fields");
+            }else {
+                alert("Details submitted successfully");
+
+                document.getElementById('name').disabled = true;
+                document.getElementById('registerNo').disabled = true;
+                document.getElementById('dob').disabled = true;
+                document.getElementById('emailid').disabled = true;
+                document.getElementById('mobile_no').disabled = true;
+                document.getElementById('department').disabled = true;
+                document.getElementById('year_of_studying').disabled = true;
+                document.getElementById('admission_category').disabled = true;
+                document.getElementById('meetingRequestForm').getElementsByTagName('button')[0].disabled = true; 
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "/handle_forms_data", 
+                data: {
+                    name: name,
+                    registerNo: registerNo,
+                    dob: dob,
+                    emailid: emailid,
+                    mobile_no: mobile_no,
+                    department: department,
+                    year_of_studying: year_of_studying,
+                    admission_category: admission_category
+                },
+                success: function (response) {
+                    alert("Details submitted successfully");
+                },
+                error: function (error) {
+                    alert("Error submitting form");
+                }
+            });
+        }
+    </script>
+{% endblock %}
